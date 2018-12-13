@@ -1,0 +1,5 @@
+https://github.com/cloudify-incubator/cloudify-utilities-plugin/archive/1.10.0.tar.gz
+
+cloudify-plugins-common==4.2
+cloudify-rest-client==4.2
+

@@ -1,0 +1,11 @@
+# Input parameters:
+# - uuid
+
+rest_calls:
+  - path: '/project/{{ uuid }}?exclude_back_refs=True&exclude_children=True'
+    method: 'GET'
+    headers:
+      Content-type: 'application/json'
+    response_format: json
+    response_translation:
+      project: [data]
