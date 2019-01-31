@@ -526,11 +526,22 @@ class TestRelationshipInputArgumentResolver(unittest.TestCase):
         argument1_name = 'var1'
         argument2_name = 'var2'
 
-        relationship_source_node_mock = Mock()
-        relationship_source_instance_mock = Mock()
-
         relationship_target_node_mock = Mock()
         relationship_target_instance_mock = Mock()
+        relationship_target_instance_mock.id = '5'
+
+        relationship_source_node_mock = Mock()
+        relationship_source_instance_mock = Mock()
+        relationship_ctx = MockRelationshipContext(
+            target=MockRelationshipSubjectContext(
+                node=relationship_target_node_mock,
+                instance=relationship_target_instance_mock
+            )
+        )
+
+        relationship_source_instance_mock.relationships = [
+            relationship_ctx
+        ]
 
         rule1 = Mock()
         rule1.argument_name = argument1_name
@@ -584,12 +595,12 @@ class TestRelationshipInputArgumentResolver(unittest.TestCase):
 
         rule1_evaluate_mock_expected_calls = [
             call(
-                ctx_mock,
+                relationship_ctx,
                 relationship_target_node_mock,
                 relationship_target_instance_mock
             ),
             call(
-                ctx_mock,
+                relationship_ctx,
                 relationship_source_node_mock,
                 relationship_source_instance_mock
             )
@@ -601,7 +612,7 @@ class TestRelationshipInputArgumentResolver(unittest.TestCase):
 
         rule2_evaluate_mock_expected_calls = [
             call(
-                ctx_mock,
+                relationship_ctx,
                 relationship_target_node_mock,
                 relationship_target_instance_mock
             )
@@ -616,11 +627,22 @@ class TestRelationshipInputArgumentResolver(unittest.TestCase):
         argument1_name = 'var1'
         argument2_name = 'var2'
 
-        relationship_source_node_mock = Mock()
-        relationship_source_instance_mock = Mock()
-
         relationship_target_node_mock = Mock()
         relationship_target_instance_mock = Mock()
+        relationship_target_instance_mock.id = '6'
+
+        relationship_source_node_mock = Mock()
+        relationship_source_instance_mock = Mock()
+        relationship_ctx = MockRelationshipContext(
+            target=MockRelationshipSubjectContext(
+                node=relationship_target_node_mock,
+                instance=relationship_target_instance_mock
+            )
+        )
+
+        relationship_source_instance_mock.relationships = [
+            relationship_ctx
+        ]
 
         rule1 = Mock()
         rule1.argument_name = argument1_name

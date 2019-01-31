@@ -128,27 +128,35 @@ class InstanceInputArgumentResolver(InputArgumentResolver):
 
 class RelationshipInputArgumentResolver(InputArgumentResolver):
 
+    def _get_relationship_ctx(self, ctx):
+        for relationship in ctx.source.instance.relationships:
+            if relationship.target.instance.id == ctx.target.instance.id:
+                return relationship
+
     def _resolve(self, rule, ctx):
-        is_successful, result = rule.evaluate(
-            ctx,
-            ctx.target.node,
-            ctx.target.instance
-        )
+        relationship_ctx = self._get_relationship_ctx(ctx)
 
-        if is_successful:
-            return result
+        if relationship_ctx:
+            is_successful, result = rule.evaluate(
+                relationship_ctx,
+                ctx.target.node,
+                ctx.target.instance
+            )
 
-        is_successful, result = rule.evaluate(
-            ctx,
-            ctx.source.node,
-            ctx.source.instance
-        )
+            if is_successful:
+                return result
 
-        if is_successful:
-            return result
+            is_successful, result = rule.evaluate(
+                relationship_ctx,
+                ctx.source.node,
+                ctx.source.instance
+            )
+
+            if is_successful:
+                return result
 
         raise InputArgumentResolvingError(
-            'Cannot resolve {0} - source and targed nodes cannot be used'
+            'Cannot resolve {0} - source and target nodes cannot be used'
             .format(str(rule))
         )
 
