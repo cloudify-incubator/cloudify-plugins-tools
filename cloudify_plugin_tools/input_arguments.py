@@ -3,6 +3,10 @@ from .constants import (
     SOURCE_RUNTIME_PROPERTIES,
     SOURCE_INPUTS,
     SOURCE_RESOLVE,
+    SOURCE_SOURCE_PROPERTIES,
+    SOURCE_SOURCE_RUNTIME_PROPERTIES,
+    SOURCE_TARGET_PROPERTIES,
+    SOURCE_TARGET_RUNTIME_PROPERTIES,
     SOURCES_DEFAULT_ORDER
 )
 from .exceptions import InputArgumentResolvingError
@@ -156,6 +160,16 @@ class InputArgumentProvider(object):
             lambda ctx, provider, kwargs: ctx.node.properties,
         SOURCE_RUNTIME_PROPERTIES:
             lambda ctx, provider, kwargs: ctx.instance.runtime_properties,
+        SOURCE_SOURCE_PROPERTIES:
+            lambda ctx, provider, kwargs: ctx.source.node.properties,
+        SOURCE_SOURCE_RUNTIME_PROPERTIES:
+            lambda ctx, provider, kwargs:
+            ctx.source.instance.runtime_properties,
+        SOURCE_TARGET_PROPERTIES:
+            lambda ctx, provider, kwargs: ctx.target.node.properties,
+        SOURCE_TARGET_RUNTIME_PROPERTIES:
+            lambda ctx, provider, kwargs:
+            ctx.target.instance.runtime_properties,
         SOURCE_INPUTS:
             lambda ctx, provider, kwargs: kwargs,
         SOURCE_RESOLVE:
