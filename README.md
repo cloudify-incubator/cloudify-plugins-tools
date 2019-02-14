@@ -1,6 +1,11 @@
 # cloudify-plugins-tools
 (Dependency injection) framework and tools simplifying cloudify plugin development and reducing number of boilerplate code lines
 
+## Example usages
+
+* https://github.com/Cloudify-PS/cloudify-opencontrail-plugin
+* https://github.com/Cloudify-PS/cloudify-idirect-plugin
+
 ## Common TOSCA model related part (cloudify_plugin_tools)
 
 To develop a plugin it is (often) needed to write many lines of boilerplate code to e.g. merge input arguments from few sources, resolve some arguments using relationships, perform exception handling etc.
