@@ -1,4 +1,4 @@
--e git+https://github.com/cloudify-incubator/cloudify-utilities-plugin.git@1.10.0#egg=cloudify-utilities-plugin
+-e git+https://github.com/cloudify-incubator/cloudify-utilities-plugin.git@1.23.7.0#egg=cloudify-utilities-plugin
 
 cloudify-plugins-common==4.2
 cloudify-rest-client==4.2
