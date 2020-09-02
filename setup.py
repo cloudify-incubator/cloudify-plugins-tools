@@ -16,6 +16,6 @@ setup(
     zip_safe=False,
     install_requires=[
         'cloudify-plugins-common>=4.2',
-        'cloudify-utilities-plugin==1.10.0'
+        'cloudify-utilities-plugin'
     ]
 )
