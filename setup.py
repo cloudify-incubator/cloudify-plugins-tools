@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='cloudify-plugins-tools',
-    version='0.1.2',
+    version='0.1.3',
     author='Krzysztof Bijakowski',
     author_email='krzysztof.bijakowski@cloudify.co',
     description='(Dependency injection) framework and tools simplifying '
@@ -15,7 +15,8 @@ setup(
     license='proprietary',
     zip_safe=False,
     install_requires=[
-        'cloudify-plugins-common>=4.2',
-        'cloudify-utilities-plugin==1.10.0'
+        'cloudify-common>=4.6',
+        'cloudify-utilities-plugin==1.23.7',
+        'cloudify-utilities-plugins-sdk==0.0.27'
     ]
 )

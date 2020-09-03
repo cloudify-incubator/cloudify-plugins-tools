@@ -1,7 +1,11 @@
 import sys
 
-from cloudify_rest.rest_sdk import exceptions as cloudify_rest_sdk_exceptions
+from cloudify_common_sdk import exceptions as cloudify_rest_sdk_exceptions
 from requests import exceptions as requests_exceptions
+
+
+class RestSdkException(Exception):
+    pass
 
 
 class ClientInitializationError(Exception):
@@ -43,7 +47,7 @@ RECOVERABLE_EXCEPTIONS = (
     cloudify_rest_sdk_exceptions.ExpectationException,
     cloudify_rest_sdk_exceptions.RecoverableResponseException,
     cloudify_rest_sdk_exceptions.RecoverableStatusCodeCodeException,
-    cloudify_rest_sdk_exceptions.RestSdkException,
+    RestSdkException,
     ClientInitializationError,
     requests_exceptions.HTTPError
 )

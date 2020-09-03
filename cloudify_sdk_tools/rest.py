@@ -2,7 +2,7 @@ import copy
 import os
 import sys
 
-from cloudify_rest.rest_sdk.utility import process as send_rest_request
+from cloudify_rest_sdk.utility import process as send_rest_request
 
 from .exceptions import TemplateNotFoundError
 
