@@ -15,7 +15,7 @@ setup(
     license='proprietary',
     zip_safe=False,
     install_requires=[
-        'cloudify-plugins-common>=4.2',
-        'cloudify-utilities-plugin'
+        'cloudify-common>=4.6',
+        'cloudify-utilities-plugins-sdk==0.0.27'
     ]
 )
