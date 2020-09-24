@@ -25,12 +25,14 @@ class InputArgumentResolvingRule(object):
                  argument_name,
                  node_type=None,
                  relationship_type=None,
-                 runtime_properties_path=None):
+                 runtime_properties_path=None,
+                 required=True):
 
         self.argument_name = argument_name
         self.node_type = node_type
         self.relationship_type = relationship_type
         self.runtime_properties_path = runtime_properties_path or []
+        self.required = required
 
     def check_node_type(self, node_type_hierarchy):
         if self.node_type:
@@ -120,10 +122,13 @@ class InstanceInputArgumentResolver(InputArgumentResolver):
             if is_successful:
                 return result
 
-        raise InputArgumentResolvingError(
-            'Cannot resolve {0} - no suitable relationships / nodes found'
-            .format(str(rule))
-        )
+        if rule.required:
+            raise InputArgumentResolvingError(
+                'Cannot resolve {0} - no suitable relationships / nodes found'
+                .format(str(rule))
+            )
+
+        return None
 
 
 class RelationshipInputArgumentResolver(InputArgumentResolver):
